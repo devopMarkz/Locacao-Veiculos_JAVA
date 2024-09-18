@@ -57,3 +57,10 @@ src/
 
    ```bash
    git clone https://github.com/seu-usuario/nome-do-repositorio.git
+
+## Compile o Projeto
+
+Para compilar o projeto, utilize seu ambiente de desenvolvimento Java favorito (Eclipse, IntelliJ IDEA, etc.). Navegue até o diretório raiz do projeto e execute o processo de build.
+
+```bash
+javac -d bin src/model/entities/*.java src/model/enums/*.java src/model/exceptions/*.java
