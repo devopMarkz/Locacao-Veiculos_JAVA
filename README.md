@@ -19,3 +19,21 @@ Este é um sistema de reserva de veículos desenvolvido em Java. O sistema permi
 
 O projeto está organizado da seguinte maneira:
 
+src/
+├── model/
+│   ├── entities/
+│   │   ├── Cliente.java
+│   │   ├── PessoaFisica.java
+│   │   ├── PessoaJuridica.java
+│   │   ├── Veiculo.java
+│   │   ├── Carro.java
+│   │   ├── Reserva.java
+│   │   ├── Locadora.java
+│   ├── enums/
+│   │   ├── CategoriaVeiculo.java
+│   │   ├── StatusReserva.java
+│   │   ├── TipoCambio.java
+│   ├── exceptions/
+│   │   ├── CpfCadastradoException.java
+│   │   ├── CnpjCadastradoException.java
+│   │   ├── VeiculoIndisponivelException.java
