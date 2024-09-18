@@ -37,3 +37,23 @@ src/
 │   │   ├── CpfCadastradoException.java  
 │   │   ├── CnpjCadastradoException.java  
 │   │   ├── VeiculoIndisponivelException.java  
+
+
+- `Cliente.java`: Classe base para clientes.
+- `PessoaFisica.java` e `PessoaJuridica.java`: Classes que estendem `Cliente` para representar clientes de diferentes naturezas (física ou jurídica).
+- `Veiculo.java` e `Carro.java`: Classes responsáveis por armazenar os dados dos veículos.
+- `Reserva.java`: Classe que representa uma reserva de veículo.
+- `Locadora.java`: Classe principal do sistema, onde são gerenciados clientes, veículos e reservas.
+- `exceptions/`: Contém as exceções customizadas do sistema.
+
+## Requisitos
+
+- Java 8 ou superior
+- Biblioteca `java.time.LocalDate` para manipulação de datas
+
+## Como Executar
+
+1. Clone o repositório:
+
+   ```bash
+   git clone https://github.com/seu-usuario/nome-do-repositorio.git
