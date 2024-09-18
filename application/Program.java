@@ -26,38 +26,63 @@ public class Program {
 			
 			Locadora locadora = new Locadora();
 			
-			System.out.print("Informe seu e-mail para poder efetuar a reserva: ");
-			String email = sc.next();
+			Cliente cliente = iniciarUsuario(locadora, sc);
 			
-			Cliente cliente = ValidarClienteService.validarCliente(email, locadora);
+			Veiculo veiculo = informarVeiculo(locadora, sc);
 			
-			System.out.print("Informe a placa do veículo que deseja reservar: ");
-			String placa = sc.next();
-			
-			Veiculo veiculo = ValidarVeiculoService.validarVeiculo(placa, locadora);
-			
-			System.out.print("Informe a data de início da reserva (dd/MM/yyyy): ");
-			LocalDate dataInicio = LocalDate.parse(sc.next(), fmt);
-			
-			System.out.print("Informe a data do fim da reserva (dd/MM/yyyy): ");
-			LocalDate dataFinal = LocalDate.parse(sc.next(), fmt);
-			
-			locadora.efetuarReserva(cliente, veiculo, dataInicio, dataFinal);
+			informarDadosDaReserva(locadora, cliente, veiculo, sc);
 			
 			System.out.println("VEICULOS DISPONÍVEIS: ");
 			locadora.listarVeiculosDisponiveis();
 			
 			System.out.println("-------------------------------------");
 			
-			for (Reserva reservas : locadora.getReservas()) {
-				System.out.println(reservas);
-			}
+			listarReservas(locadora);
 		} catch (VeiculoIndisponivelException e) {
 			System.out.println(e.getMessage());
 		} catch (NoSuchElementException e) {
 			System.out.println("E-mail ou Veículo inexistentes!");
 		}
+	}
+	
+	private static void listarReservas(Locadora locadora) {
+		for (Reserva reservas : locadora.getReservas()) {
+			System.out.println(reservas);
+		}
+	}
+	
+	private static void informarDadosDaReserva(Locadora locadora, Cliente cliente, Veiculo veiculo, Scanner sc) throws VeiculoIndisponivelException {
+		sc = new Scanner(System.in);
+
+		System.out.print("Informe a data de início da reserva (dd/MM/yyyy): ");
+		LocalDate dataInicio = LocalDate.parse(sc.next(), fmt);
 		
+		System.out.print("Informe a data do fim da reserva (dd/MM/yyyy): ");
+		LocalDate dataFinal = LocalDate.parse(sc.next(), fmt);
+		
+		locadora.efetuarReserva(cliente, veiculo, dataInicio, dataFinal);
+	}
+	
+	private static Veiculo informarVeiculo(Locadora locadora, Scanner sc) {		
+		sc = new Scanner(System.in);
+		
+		System.out.print("Informe a placa do veículo que deseja reservar: ");
+		String placa = sc.next();
+		
+		Veiculo veiculo = ValidarVeiculoService.validarVeiculo(placa, locadora);
+		
+		return veiculo;
+	}
+	
+	private static Cliente iniciarUsuario(Locadora locadora, Scanner sc) {
+		sc = new Scanner(System.in);
+		
+		System.out.print("Informe seu e-mail para poder efetuar a reserva: ");
+		String email = sc.next();
+		
+		Cliente cliente = ValidarClienteService.validarCliente(email, locadora);
+		
+		return cliente;
 	}
 
 }
