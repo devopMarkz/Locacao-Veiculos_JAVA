@@ -64,3 +64,11 @@ Para compilar o projeto, utilize seu ambiente de desenvolvimento Java favorito (
 
 ```bash
 javac -d bin src/model/entities/*.java src/model/enums/*.java src/model/exceptions/*.java
+
+
+## Execute o Projeto
+
+Após a compilação, execute a classe principal do projeto. Como não há uma `main` explícita informada, certifique-se de ter uma classe que contenha o método `main`. Caso utilize a classe `Locadora.java` como ponto de entrada, por exemplo, o comando seria:
+
+```bash
+java -cp bin model.entities.Locadora
