@@ -51,24 +51,47 @@ src/
 - Java 8 ou superior
 - Biblioteca `java.time.LocalDate` para manipulação de datas
 
-## Como Executar
+## Funcionalidades Principais
 
-1. Clone o repositório:
 
-   ```bash
-   git clone https://github.com/seu-usuario/nome-do-repositorio.git
+### 1. Cadastro de Clientes
+- Adicione clientes à locadora.
+- Verifique se o CPF ou CNPJ do cliente já está cadastrado para evitar duplicatas.
+- Suporte para Pessoa Física e Pessoa Jurídica.
 
-2. Compile o Projeto
+### 2. Cadastro de Veículos
+- Adicione veículos à locadora.
+- Os veículos possuem características como placa, modelo, marca, ano, categoria e tipo de câmbio.
 
-Para compilar o projeto, utilize seu ambiente de desenvolvimento Java favorito (Eclipse, IntelliJ IDEA, etc.). Navegue até o diretório raiz do projeto e execute o processo de build.
+### 3. Reserva de Veículos
+- Realize reservas de veículos disponíveis.
+- O sistema verifica se o veículo está disponível antes de confirmar a reserva.
+- Atualiza o status do veículo para "indisponível" após a reserva.
 
-   ```bash
-   javac -d bin src/model/entities/*.java src/model/enums/*.java src/model/exceptions/*.java
+### 4. Listagem de Veículos Disponíveis
+- Liste todos os veículos disponíveis para reserva.
 
-3. Execute o Projeto
+### 5. Listagem de Reservas
+- Exiba todas as reservas efetuadas.
 
-Após a compilação, execute a classe principal do projeto. Como não há uma `main` explícita informada, certifique-se de ter uma classe que contenha o método `main`. Caso utilize a classe `Locadora.java` como ponto de entrada, por exemplo, o comando seria:
+### 6. Exceções e Validações
+- Exceções são lançadas para condições como veículo indisponível e CPF/CNPJ já cadastrado.
 
-```bash
-java -cp bin model.entities.Locadora
 
+## Exceções Tratadas
+
+O projeto inclui tratamento de exceções para garantir a robustez e a integridade dos dados. As seguintes exceções são tratadas:
+
+### 1. `VeiculoIndisponivelException`
+- **Descrição:** Lançada quando um veículo solicitado para reserva não está disponível.
+- **Uso:** Garantir que apenas veículos disponíveis possam ser reservados.
+
+### 2. `CpfCadastradoException`
+- **Descrição:** Lançada quando um CPF já cadastrado é tentado novamente para um novo cliente.
+- **Uso:** Evitar a duplicação de CPFs para pessoas físicas.
+
+### 3. `CnpjCadastradoException`
+- **Descrição:** Lançada quando um CNPJ já cadastrado é tentado novamente para um novo cliente.
+- **Uso:** Evitar a duplicação de CNPJs para pessoas jurídicas.
+
+Essas exceções são utilizadas para validar a disponibilidade de veículos e a unicidade dos dados dos clientes, proporcionando um fluxo de trabalho mais seguro e confiável.
